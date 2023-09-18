@@ -23,7 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: treinos_development
+  database: tcc
+  host: localhost
+  port: 5432
+  user: kelly
+  password: 1234
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
