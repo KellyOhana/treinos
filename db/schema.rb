@@ -14,6 +14,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "exercicios", primary_key: "exercicioID", id: :integer, default: nil, force: :cascade do |t|
+    t.string "nome", null: false
+    t.integer "dependencia"
+    t.integer "codependencia"
+    t.integer "treinoID"
+  end
+
+  create_table "treinos", primary_key: "treinoID", id: :integer, default: nil, force: :cascade do |t|
+    t.string "nome", null: false
+    t.integer "userID"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -31,4 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "exercicios", "exercicios", column: "codependencia", primary_key: "exercicioID", name: "exercicios___fk2"
+  add_foreign_key "exercicios", "exercicios", column: "dependencia", primary_key: "exercicioID", name: "exercicios___fk"
+  add_foreign_key "exercicios", "treinos", column: "treinoID", primary_key: "treinoID", name: "exercicios__fk"
+  add_foreign_key "treinos", "users", column: "userID", name: "treinos_treinos__fk"
 end
