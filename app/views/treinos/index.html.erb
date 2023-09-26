@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice if notice%></p>
+
+<h1>Treinos</h1>
+
+<div id="treinos">
+  <% @treinos.each do |treino| %>
+    <%= render treino %>
+    <p>
+      <%= link_to "#{treino.nome}", treino %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New treino", new_treino_path %>

@@ -1,3 +1,3 @@
 class Exercicio < ApplicationRecord
-  has_many :treino
+  belongs_to :treino
 end

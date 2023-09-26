@@ -35,6 +35,10 @@ gem 'devise'
 gem "bootstrap"
 
 gem "sassc-rails"
+
+gem 'nested_form_fields'
+
+gem 'jquery-rails'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -59,7 +63,7 @@ group :development, :test do
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # Use console on exceptions home [https://github.com/rails/web-console]
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

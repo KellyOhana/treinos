@@ -1,0 +1,15 @@
+<%= form_for @treino do |f| %>
+  <%= f.label :nome %>
+  <%= f.text_field :nome %>
+
+  <%= f.nested_fields_for :exercicios do |ff| %>
+    <%= ff.remove_nested_fields_link "Remover" %>
+    <%= ff.label :nome %>
+    <%= ff.text_field :nome %>
+  <% end %>
+<br>
+  <%= f.add_nested_fields_link :exercicios, "Adicionar Exercício" %>
+<br>
+  <%= f.submit "Criar Treino" %>
+<% end %>
+
