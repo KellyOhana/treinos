@@ -66,6 +66,6 @@ class ExerciciosController < ApplicationController
     end
     # Only allow a list of trusted parameters through.
     def exercicio_params
-      params.require(:exercicio).permit(:nome, :treino_id)
+      params.require(:exercicio).permit(:nome, :id)
     end
 end
