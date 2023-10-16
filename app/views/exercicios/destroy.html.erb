@@ -1,0 +1,8 @@
+<%= fields model: @treino do |form| %>
+  <%= form.fields_for :exercicios, child_index: params[:index] do |exercicio_form| %>
+    <%= turbo_frame_tag "exercicio_#{exercicio_form.index}" do %>
+      <%= exercicio_form.hidden_field :id, value: params[:id] %>
+      <%= exercicio_form.hidden_field :_destroy, value: true %>
+    <% end %>
+  <% end %>
+<% end %>

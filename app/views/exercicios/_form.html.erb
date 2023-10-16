@@ -1,21 +1,13 @@
-<%= form_with(model: [@treino, @exercicio]) do |form| %>
-  <% if exercicio.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(exercicio.errors.count, "error") %> prohibited this exercicio from being saved:</h2>
-
-      <ul>
-        <% exercicio.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :nome %>
+<%= turbo_frame_tag "task_#{form.index}" do %>
+  <%= form.hidden_field :id %>
+  <div>
+    <%= form.label :nome, "Nome do Exercicio", style: "display: block" %><br>
     <%= form.text_field :nome %>
   </div>
-  <div>
-    <%= form.submit %>
-  </div>
+
+  <%= form.submit "destroy exercicio",
+                  formaction: exercicio_path(form.index, form.object.id),
+                  formmethod: :delete,
+                  formnovalidate: true,
+                  data: { turbo_frame: "exercicio_#{form.index}" } %>
 <% end %>

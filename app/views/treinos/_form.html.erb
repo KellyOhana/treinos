@@ -1,15 +1,36 @@
-<%= form_for @treino do |f| %>
-  <%= f.label :nome %>
-  <%= f.text_field :nome %>
+<%= form_for(@treino) do |f| %>
+  <% if treino.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
 
-  <%= f.nested_fields_for :exercicios do |ff| %>
-    <%= ff.remove_nested_fields_link "Remover" %>
-    <%= ff.label :nome %>
-    <%= ff.text_field :nome %>
+      <ul>
+        <% treino.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
-<br>
-  <%= f.add_nested_fields_link :exercicios, "Adicionar Exercício" %>
-<br>
-  <%= f.submit "Criar Treino" %>
-<% end %>
 
+  <div>
+    <%= f.label :nome, "Nome do Treino", style: "display: block" %><br>
+    <%= f.text_field :nome %>
+  </div>
+
+  <h4>Exercícios</h4>
+  <div id="exercicios">
+    <%= f.fields_for :exercicios do |exercicio_form| %>
+      <%= render "exercicios/form", form: exercicio_form %>
+    <% end %>
+  </div>
+
+  <%= f.submit "Add exercicio",
+                  formaction: exercicio_path(@treino.exercicios.size),
+                  formmethod: :post,
+                  formnovalidate: true,
+                  id: "add-exercicio" %>
+
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

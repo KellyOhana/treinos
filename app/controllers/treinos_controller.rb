@@ -14,6 +14,7 @@ class TreinosController < ApplicationController
   # GET /treinos/new
   def new
     @treino = current_user.treino.build
+    @treino.exercicios.build
   end
 
   # GET /treinos/1/edit
@@ -66,6 +67,6 @@ class TreinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treino_params
-      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:exercicioID, nome, :_destroy])
+      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:exercicioID, :nome, :_destroy])
     end
 end

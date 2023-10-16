@@ -1,6 +1,6 @@
 class ExerciciosController < ApplicationController
-  before_action :set_exercicio, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :setup_treino
 
   # GET /exercicios or /exercicios.json
   def index
@@ -13,8 +13,6 @@ class ExerciciosController < ApplicationController
 
   # GET /exercicios/new
   def new
-    @treino = Treino.find(params[:treino_id])
-    @exercicio = @treino.exercicios.build
   end
 
   # GET /exercicios/1/edit
@@ -52,20 +50,20 @@ class ExerciciosController < ApplicationController
 
   # DELETE /exercicios/1 or /exercicios/1.json
   def destroy
-    @exercicio.destroy
-
-    respond_to do |format|
-      format.html { redirect_to exercicios_url, notice: "Exercicio was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_exercicio
-      @exercicio = Exercicio.find(params[:id])
-    end
 
+
+    def setup_treino
+      @treino = Treino.new(exercicios: [Exercicio.new])
+
+      respond_to do |format|
+        format.html { redirect_to exercicio_url, notice: "Exercicio foi alterado." }
+        format.json { head :no_content }
+      end
+    end
     # Only allow a list of trusted parameters through.
     def exercicio_params
       params.require(:exercicio).permit(:nome, :treino_id)

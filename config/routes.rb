@@ -5,10 +5,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :treinos do
-    resources :exercicios
-  end
+  resources :treinos
 
-  resources :exercicios
+  resources :exercicios, only: [], param: :index do
+    member do
+      delete '(:id)' => "exercicios#destroy", as: ""
+      post '/' => "exercicios#create"
+    end
+  end
 
 end
