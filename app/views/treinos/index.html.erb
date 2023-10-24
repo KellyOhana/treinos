@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice if notice%></p>
+<div class="my-8 text-center space-y-4">
+  <h1 class="text-4xl font-bold text-center">
+    Treinos
+  </h1>
 
-<h1>Treinos</h1>
 
-<div id="treinos">
-  <% @treinos.each do |treino| %>
-    <%= render treino %>
-    <p>
-      <%= link_to "#{treino.nome}", treino %>
-    </p>
-  <% end %>
+  <div id="treinos"  class="grid grid-cols-3 gap-4">
+    <% @treinos.each do |treino| %>
+      <p>
+        <%= link_to "#{treino.nome}", treino %>
+      </p>
+    <% end %>
+  </div>
+
+  <%= link_to "New treino", new_treino_path, class: "inline-block px-4 py-2 rounded-md bg-blue-300 hover:bg-blue-400" %>
+  <%= render partial: '/logado' %>
+
 </div>
-
-<%= link_to "New treino", new_treino_path %>

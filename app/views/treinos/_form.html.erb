@@ -1,36 +1,37 @@
-<%= form_for(@treino) do |f| %>
-  <% if treino.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
+<div class="text-3xl text-center">
+  <%= form_with(model: treino, data: { controller: "render-response" }, class: "space-y-4") do |form| %>
+    <% if treino.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
 
-      <ul>
-        <% treino.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% treino.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <fieldset>
+      <legend>Treino</legend>
+      <%= form.label :nome, style: "display: block" %>
+      <%= form.text_field :nome, class: "px-2 py-1 border w-full rounded-md" %>
+    </fieldset>
+
+    <div id="exercicios" class="mb-2">
+      <%= render @treino.exercicios %>
+    </div>
+
+    <div class="mb-2">
+      <%= link_to "Adicionar um exercicio", new_exercicio_path, data: { turbo_stream: true }, class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400"  %>
+    </div>
+
+    <div>
+      <% if form.object.persisted? %>
+        <%= form.submit "Atualizar", class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400 w-full" %>
+      <% else %>
+        <%= form.submit "Criar", class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400 w-full" %>
+      <% end %>
     </div>
   <% end %>
-
-  <div>
-    <%= f.label :nome, "Nome do Treino", style: "display: block" %><br>
-    <%= f.text_field :nome %>
-  </div>
-
-  <h4>Exercícios</h4>
-  <div id="exercicios">
-    <%= f.fields_for :exercicios do |exercicio_form| %>
-      <%= render "exercicios/form", form: exercicio_form %>
-    <% end %>
-  </div>
-
-  <%= f.submit "Add exercicio",
-                  formaction: exercicio_path(@treino.exercicios.size),
-                  formmethod: :post,
-                  formnovalidate: true,
-                  id: "add-exercicio" %>
-
-
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,2 +1,14 @@
-<div id="<%= dom_id treino %>">
+<div id="<%= dom_id treino %>" class="text-3xl text-center" >
+  <h1>
+    <%= treino.nome.titleize %>
+  </h1>
+
+  <div>
+    <% treino.exercicios.each do |exercicio| %>
+    <p>
+      <%= exercicio.nome %>
+      <%= exercicio.dificuldade %>
+    </p>
+  <% end %>
+  </div>
 </div>

@@ -1,10 +1,12 @@
-<h1>Editing treino</h1>
+<div class="space-y-4 mt-8 mx-auto max-w-lg bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-lg font-mono">
+  <h1 class="text-3xl text-center">Editando treino</h1>
 
-<%= render "form", treino: @treino %>
+  <%= render "form", treino: @treino %>
 
-<br>
-
-<div>
-  <%= link_to "Show this treino", @treino %> |
-  <%= link_to "Back to treinos", treinos_path %>
+  <div class="text-center">
+    <%= link_to "Mostrar esse treino", @treino, class: "hover:text-blue-400" %> |
+    <%= link_to "Voltar para treinos", treinos_path, class: "hover:text-blue-400" %>
+  </div>
+  <%= render partial: '/logado' %>
 </div>
+

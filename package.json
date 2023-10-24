@@ -1,3 +1,5 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "@rails/request.js": "^0.0.9"
+  }
 }

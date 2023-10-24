@@ -67,6 +67,6 @@ class TreinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treino_params
-      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :_destroy])
+      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :dificuldade, :_destroy])
     end
 end
