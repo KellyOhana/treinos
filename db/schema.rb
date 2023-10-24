@@ -14,16 +14,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "exercicios", primary_key: "exercicioID", id: :integer, default: nil, force: :cascade do |t|
+  create_table "exercicios", id: :integer, default: nil, force: :cascade do |t|
     t.string "nome", null: false
     t.integer "dependencia"
     t.integer "codependencia"
-    t.integer "treinoID"
+    t.integer "treino_id", null: false
+    t.boolean "concluido"
+    t.integer "dificuldade"
   end
 
-  create_table "treinos", primary_key: "treinoID", id: :integer, default: nil, force: :cascade do |t|
+  create_table "treinos", id: :integer, default: nil, force: :cascade do |t|
     t.string "nome", null: false
-    t.integer "userID"
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,8 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "exercicios", "exercicios", column: "codependencia", primary_key: "exercicioID", name: "exercicios___fk2"
-  add_foreign_key "exercicios", "exercicios", column: "dependencia", primary_key: "exercicioID", name: "exercicios___fk"
-  add_foreign_key "exercicios", "treinos", column: "treinoID", primary_key: "treinoID", name: "exercicios__fk"
-  add_foreign_key "treinos", "users", column: "userID", name: "treinos_treinos__fk"
+  add_foreign_key "exercicios", "exercicios", column: "codependencia", name: "exercicios___fk2"
+  add_foreign_key "exercicios", "exercicios", column: "dependencia", name: "exercicios___fk"
+  add_foreign_key "exercicios", "treinos", name: "exercicios__fk"
+  add_foreign_key "treinos", "users", name: "treinos_treinos__fk"
 end
