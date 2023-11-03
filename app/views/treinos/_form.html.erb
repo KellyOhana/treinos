@@ -1,4 +1,4 @@
-<div class="text-3xl text-center">
+<div class="card">
   <%= form_with(model: treino, data: { controller: "render-response" }, class: "space-y-4") do |form| %>
     <% if treino.errors.any? %>
       <div style="color: red">
@@ -12,26 +12,39 @@
       </div>
     <% end %>
 
-    <fieldset>
-      <legend>Treino</legend>
-      <%= form.label :nome, style: "display: block" %>
-      <%= form.text_field :nome, class: "px-2 py-1 border w-full rounded-md" %>
-    </fieldset>
+      <div class="card-header p-3">
+        <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Treino</h5>
+      </div>
 
-    <div id="exercicios" class="mb-2">
-      <%= render @treino.exercicios %>
-    </div>
+      <div class="card-body" >
+        <fieldset>
+          <%= form.label :nome, style: "display: block" %>
+          <%= form.text_field :nome, class: "px-2 py-1 border w-full rounded-md" %>
+        </fieldset>
 
-    <div class="mb-2">
-      <%= link_to "Adicionar um exercicio", new_exercicio_path, data: { turbo_stream: true }, class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400"  %>
-    </div>
+        <div id="exercicios" class="mb-2">
+          <%= render @treino.exercicios %>
+        </div>
 
-    <div>
-      <% if form.object.persisted? %>
-        <%= form.submit "Atualizar", class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400 w-full" %>
-      <% else %>
-        <%= form.submit "Criar", class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400 w-full" %>
-      <% end %>
-    </div>
+        <div class="mb-2">
+          <%= link_to "Adicionar um exercicio", new_exercicio_path, data: { turbo_stream: true }, class: "inline-block px-4 py-2 rounded-md bg-blue-300 hover:bg-blue-400" %>
+        </div>
+
+        <div>
+          <% if form.object.persisted? %>
+            <%= form.submit "Atualizar", class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400 w-full" %>
+          <% else %>
+            <%= form.submit "Criar", class: "p-2 rounded-md bg-blue-300 hover:bg-blue-400 w-full" %>
+          <% end %>
+        </div>
+      </div>
+
+
+
   <% end %>
+
 </div>
+
+
+
+

@@ -27,7 +27,7 @@ class TreinosController < ApplicationController
 
     respond_to do |format|
       if @treino.save
-        format.html { redirect_to treino_url(@treino), notice: "Treino was successfully created." }
+        format.html { redirect_to treino_url(@treino), notice: "Treino criado com sucesso." }
         format.json { render :show, status: :created, location: @treino }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class TreinosController < ApplicationController
   def update
     respond_to do |format|
       if @treino.update(treino_params)
-        format.html { redirect_to treino_url(@treino), notice: "Treino was successfully updated." }
+        format.html { redirect_to treino_url(@treino), notice: "Treino atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @treino }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class TreinosController < ApplicationController
     @treino.destroy
 
     respond_to do |format|
-      format.html { redirect_to treinos_url, notice: "Treino was successfully destroyed." }
+      format.html { redirect_to treinos_url, notice: "Treino removido com sucesso." }
       format.json { head :no_content }
     end
   end
@@ -67,6 +67,6 @@ class TreinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treino_params
-      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :dificuldade, :_destroy])
+      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :nivel, :_destroy])
     end
 end

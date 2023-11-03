@@ -2,14 +2,12 @@
   <%= fields_for "treino[exercicios_attributes][#{turbo_id_for(exercicio)}]", exercicio do |ff| %>
     <fieldset class="mb-4" id="<%= turbo_id_for(exercicio) %>">
       <legend>Exercicio</legend>
-      <%= ff.label :nome %><br>
-      <%= ff.text_field :nome, class: "px-2 py-1 border w-full rounded-md" %>
-      <%= ff.label :concluido %>
-      <%= ff.check_box :concluido %>
-      <%= ff.label :dificuldade %>
-      <%= ff.select :dificuldade, options_for_select((1..5).map { |number| [number, number] }) %>
+      <%= ff.label :nome %>
+      <%= ff.text_field :nome %>
+      <%= ff.label :nivel %>
+      <%= ff.select :nivel, options_for_select((1..5).map { |number| [number, number] }) %>
       <%= ff.hidden_field :id %>
-      <%= button_tag "Deletar exercicio", formaction: exercicio_path(turbo_id_for(exercicio)), formmethod: :delete, class: "mt-4 float-right p-2 rounded-md bg-red-300 hover:bg-red-400" %>
+      <%= button_tag "Deletar exercicio", formaction: exercicio_path(turbo_id_for(exercicio)), formmethod: :delete %>
     </fieldset>
   <% end %>
 </div>

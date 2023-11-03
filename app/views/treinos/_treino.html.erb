@@ -1,14 +1,28 @@
 <div id="<%= dom_id treino %>" class="text-3xl text-center" >
-  <h1>
-    <%= treino.nome.titleize %>
-  </h1>
+  <h1><%= @treino.nome.titleize %></h1>
 
-  <div>
-    <% treino.exercicios.each do |exercicio| %>
-    <p>
-      <%= exercicio.nome %>
-      <%= exercicio.dificuldade %>
-    </p>
+  <%= form_with(model: @treino, local: true) do |form| %>
+    <table>
+      <thead>
+      <tr>
+        <th>Exercício</th>
+        <th>Concluído</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @treino.exercicios.each do |exercicio| %>
+        <%= form.fields_for :exercicios, exercicio do |exercicio_fields| %>
+          <tr>
+            <td><%= exercicio_fields.label :nome, exercicio.nome %></td>
+            <td><%= exercicio_fields.check_box :concluido %></td>
+          </tr>
+        <% end %>
+
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= form.submit "Salvar" %>
   <% end %>
-  </div>
 </div>

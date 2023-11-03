@@ -1,12 +1,21 @@
-<div class="space-y-4 mt-8 mx-auto max-w-lg bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-lg font-mono">
-  <h1 class="text-3xl text-center">Editando treino</h1>
+<section class="h-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="text-3xl text-center">
+          <h1>Editando treino</h1>
 
-  <%= render "form", treino: @treino %>
+          <%= render "form", treino: @treino %>
 
-  <div class="text-center">
-    <%= link_to "Mostrar esse treino", @treino, class: "hover:text-blue-400" %> |
-    <%= link_to "Voltar para treinos", treinos_path, class: "hover:text-blue-400" %>
+          <div class="text-center">
+            <%= link_to "Mostrar esse treino", @treino, class: "hover:text-blue-400" %> |
+            <%= link_to "Voltar para treinos", treinos_path, class: "hover:text-blue-400" %>
+          </div>
+          <%= render partial: '/logado' %>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= render partial: '/logado' %>
-</div>
+</section>
+
 

@@ -20,7 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
     t.integer "codependencia"
     t.integer "treino_id", null: false
     t.boolean "concluido"
-    t.integer "dificuldade"
+    t.integer "nivel"
+    t.integer "executado", default: 0
   end
 
   create_table "treinos", id: :integer, default: nil, force: :cascade do |t|
