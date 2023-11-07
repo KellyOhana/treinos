@@ -9,6 +9,7 @@ class TreinosController < ApplicationController
 
   # GET /treinos/1 or /treinos/1.json
   def show
+    @exercicios = @treino.exercicios.where(concluido: false).order(:nivel).limit(5)
   end
 
   # GET /treinos/new
@@ -67,6 +68,6 @@ class TreinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treino_params
-      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :nivel, :_destroy])
+      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :nivel, :codependencia, :_destroy])
     end
 end

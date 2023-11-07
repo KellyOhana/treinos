@@ -7,15 +7,12 @@
 
           <%= render "form", treino: @treino %>
 
-          <div class="text-center">
-            <%= link_to "Mostrar esse treino", @treino, class: "hover:text-blue-400" %> |
-            <%= link_to "Voltar para treinos", treinos_path, class: "hover:text-blue-400" %>
-          </div>
+            <%= link_to "Mostrar esse treino", @treino, class: "text-decoration-none" %> |
+            <%= link_to "Voltar para treinos", treinos_path, class: "text-decoration-none" %>
+
           <%= render partial: '/logado' %>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-

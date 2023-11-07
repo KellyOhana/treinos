@@ -5,9 +5,15 @@
       <%= ff.label :nome %>
       <%= ff.text_field :nome %>
       <%= ff.label :nivel %>
-      <%= ff.select :nivel, options_for_select((1..5).map { |number| [number, number] }) %>
+      <%= ff.select :nivel, options_for_select((1..5).to_a, exercicio.nivel) %>
+      <%= ff.label :codependencia %>
+      <%= ff.select :codependencia, options_from_collection_for_select(@treino.exercicios.all, :id, :nome, exercicio.codependencia), :include_blank => "Nenhuma" %>
+      <%= ff.label :concluido %>
+      <%= ff.check_box :concluido %>
       <%= ff.hidden_field :id %>
-      <%= button_tag "Deletar exercicio", formaction: exercicio_path(turbo_id_for(exercicio)), formmethod: :delete %>
+      <%= button_tag formaction: exercicio_path(turbo_id_for(exercicio)), formmethod: :delete, class: "btn btn-danger" do %>
+        <i class="fa-regular fa-trash-can"></i>
+      <% end %>
     </fieldset>
   <% end %>
 </div>

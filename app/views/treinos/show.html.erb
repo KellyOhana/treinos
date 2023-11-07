@@ -1,11 +1,19 @@
-<div  class="text-3xl text-center">
-  <%= render @treino %>
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="text-3xl text-center">
+            <%= render @treino %>
 
-  <div>
-    <%= link_to "Edit this treino", edit_treino_path(@treino) %> |
-    <%= link_to "Back to treinos", treinos_path %>
+            <div>
+              <%= link_to "Editar esse treino", edit_treino_path(@treino), class: "text-decoration-none" %> |
+              <%= link_to "Voltar para treinos", treinos_path, class: "text-decoration-none" %>
 
-    <%= button_to "Destroy this treino", @treino, method: :delete %>
+              <%= button_to "Apagar treino", @treino, method: :delete, class: "btn btn-danger" %>
+            </div>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-</div>
+</section>
