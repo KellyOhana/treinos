@@ -1,11 +1,17 @@
-<h1>New treino</h1>
+<section class="h-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+        <div class="text-3xl text-center">
+          <h1>Novo Treino</h1>
 
-<%= render "form", treino: @treino %>
+          <%= render "form", treino: @treino %>
 
-<br>
+          <%= link_to "Voltar para treinos", treinos_path, class: "text-decoration-none" %>
 
-<div>
-  <%= link_to "Back to treinos", treinos_path %>
-</div>
-<%= render partial: '/logado' %>
-
+          <%= render partial: '/logado' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
