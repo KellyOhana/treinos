@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card scrollbar-warning">
   <%= form_with(model: treino, data: { controller: "render-response" }, class: "space-y-4") do |form| %>
     <% if treino.errors.any? %>
       <div style="color: red">
@@ -27,15 +27,15 @@
         </div>
 
         <div class="mb-2">
-          <%= link_to new_exercicio_path, data: { turbo_stream: true }, class: "text-decoration-none" do %>
+          <%= link_to new_exercicio_path, data: { turbo_stream: true }, class: "text-decoration-none link-dark" do %>
             Adicionar exercício <i class="fa-solid fa-plus"></i>
           <% end %>
         </div>
 
           <% if form.object.persisted? %>
-            <%= form.submit "Atualizar", class: "btn btn-primary" %>
+            <%= form.submit "Atualizar", class: "btn btn-dark" %>
           <% else %>
-            <%= form.submit "Criar", class: "btn btn-primary" %>
+            <%= form.submit "Criar", class: "btn btn-dark" %>
           <% end %>
       </div>
 

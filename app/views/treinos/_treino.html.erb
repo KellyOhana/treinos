@@ -13,6 +13,7 @@
             <tr>
               <th scope="col">Exercício</th>
               <th scope="col">Concluído</th>
+              <th scope="col">Codependencia</th>
             </tr>
             </thead>
 
@@ -22,6 +23,11 @@
                 <tr>
                   <td><%= exercicio_fields.label :nome, exercicio.nome %></td>
                   <td><%= exercicio_fields.check_box :concluido %></td>
+                  <% if exercicio.codependencia.present? %>
+                    <td><%= @exercicios.find(exercicio.codependencia).nome %></td>
+                    <% else %>
+                      <td></td>
+                  <% end %>
                 </tr>
               <% end %>
 
@@ -29,7 +35,7 @@
             </tbody>
           </table>
 
-            <%= form.submit "Salvar", class: "btn btn-success"%>
+            <%= form.submit "Salvar", class: "btn btn-dark"%>
 
 
         <% end %>
