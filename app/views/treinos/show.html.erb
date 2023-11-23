@@ -11,7 +11,7 @@
               <%= link_to "Editar esse treino", edit_treino_path(@treino), class: "text-decoration-none link-light" %> |
               <%= link_to "Voltar para treinos", treinos_path, class: "text-decoration-none link-light" %>
 
-              <%= button_to "Apagar treino", @treino, method: :delete, class: "btn btn-danger" %>
+              <%= button_to "Apagar treino", @treino, method: :delete, form: { data: { turbo_confirm: 'Tem certeza?' } }, class: "btn btn-danger" %>
             </div>
 
         </div>

@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_213209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "exercicios", id: :integer, default: nil, force: :cascade do |t|
     t.string "nome", null: false
     t.integer "codependencia"
-    t.integer "treino_id", null: false
+    t.integer "treino_id"
     t.boolean "concluido"
     t.integer "nivel"
+    t.integer "treino_pronto_id"
+  end
+
+  create_table "treino_prontos", id: :bigint, default: -> { "nextval('treinos_prontos_id_seq'::regclass)" }, force: :cascade do |t|
+    t.string "nome", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "treinos", id: :integer, default: nil, force: :cascade do |t|
@@ -45,7 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_18_001959) do
   end
 
   add_foreign_key "exercicios", "exercicios", column: "codependencia", name: "exercicios___fk2"
-  add_foreign_key "exercicios", "exercicios", column: "dependencia", name: "exercicios___fk"
+  add_foreign_key "exercicios", "treino_prontos", name: "treino_pronto___fk"
   add_foreign_key "exercicios", "treinos", name: "exercicios__fk"
   add_foreign_key "treinos", "users", name: "treinos_treinos__fk"
 end

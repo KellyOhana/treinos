@@ -4,7 +4,7 @@ class TreinosController < ApplicationController
 
   # GET /treinos or /treinos.json
   def index
-    @treinos = Treino.all
+    @treinos = current_user.treino
   end
 
   # GET /treinos/1 or /treinos/1.json
@@ -58,6 +58,21 @@ class TreinosController < ApplicationController
       format.html { redirect_to treinos_url, notice: "Treino removido com sucesso." }
       format.json { head :no_content }
     end
+  end
+
+  def adicionar_treino_pronto
+
+    treino_pronto = TreinoPronto.find(params[:id])
+
+    treino = current_user.treino.build(nome: treino_pronto.nome)
+
+    treino_pronto.exercicios.each do |exercicio|
+      treino.exercicios.build(nome: exercicio.nome, concluido: false, nivel: exercicio.nivel)
+    end
+
+    treino.save
+
+    redirect_to treinos_url
   end
 
   private

@@ -2,12 +2,9 @@
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-12 col-xl-10">
-        <div class="text-3xl text-center text-white">
-          <h1>Novo Treino</h1>
+        <div class="text-3xl text-center">
 
-          <%= render "form", treino: @treino %>
-
-          <%= link_to "Voltar para treinos", treinos_path, class: "text-decoration-none link-light" %>
+          <%= render @treino_pronto %>
 
         </div>
       </div>

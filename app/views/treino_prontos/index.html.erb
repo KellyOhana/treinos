@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Treinos prontos</h1>
+
+<div id="treinos_prontos">
+  <% @treinos_prontos.each do |treinos_pronto| %>
+    <%= render treinos_pronto %>
+    <p>
+      <%= link_to "Show this treinos pronto", treinos_pronto %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New treinos pronto", new_treinos_pronto_path %>

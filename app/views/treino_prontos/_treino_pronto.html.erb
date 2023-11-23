@@ -1,0 +1,29 @@
+<div class="card">
+  <div id="<%= dom_id treino_pronto %>">
+    <div class="card-header p-3">
+      <h1><%= @treino_pronto.nome.titleize %></h1>
+    </div>
+
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Exercício</th>
+          <th scope="col">Dificuldade</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @exercicios.each do |exercicio| %>
+            <tr>
+              <td><%= exercicio.nome %></td>
+              <td>Nível: <%= exercicio.nivel %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= button_to "Adicionar treino", adicionar_treino_pronto_treinos_path(id: @treino_pronto.id), method: :post, class: "btn btn-dark" %>
+
+    </div>
+  </div>
+</div>
+
