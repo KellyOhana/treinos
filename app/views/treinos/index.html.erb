@@ -17,6 +17,7 @@
                     <% @treinos.each do |treino| %>
                       <tr>
                         <td><%= link_to "#{treino.nome.titleize}", treino, class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
+                        <td><%= button_to "Copiar", copiar_treino_treinos_path(id: treino.id), method: :post, class: "btn btn-dark btn-sm" %></td>
                       </tr>
                     <% end %>
                   </tbody>

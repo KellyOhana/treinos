@@ -1,5 +1,5 @@
 class TreinosController < ApplicationController
-  before_action :set_treino, only: %i[ show edit update destroy ]
+  before_action :set_treino, only: %i[ show edit update destroy copiar_treino ]
   before_action :authenticate_user!
 
   # GET /treinos or /treinos.json
@@ -67,10 +67,27 @@ class TreinosController < ApplicationController
     treino = current_user.treino.build(nome: treino_pronto.nome)
 
     treino_pronto.exercicios.each do |exercicio|
-      treino.exercicios.build(nome: exercicio.nome, concluido: false, nivel: exercicio.nivel)
+      treino.exercicios.build(nome: exercicio.nome, concluido: false, nivel: exercicio.nivel,
+                              descricao: exercicio.descricao)
     end
 
     treino.save
+
+    redirect_to treinos_url
+  end
+
+  def copiar_treino
+    treino_duplicado = @treino.dup
+    treino_duplicado.nome = "#{@treino.nome}_#{Time.now.to_i}"
+
+    treino_duplicado.save
+
+    @treino.exercicios.each do |exercicio|
+      exercicio_duplicado = exercicio.dup
+      exercicio_duplicado.treino_id = treino_duplicado.id
+      exercicio_duplicado.codependencia = nil
+      exercicio_duplicado.save
+    end
 
     redirect_to treinos_url
   end

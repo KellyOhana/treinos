@@ -6,27 +6,71 @@
           <p style="color: green"><%= notice if notice%></p>
           <p style="color: green"><%= alert if alert%></p>
 
-          <h1>TREINO EM DIA</h1>
-          <div class="card">
-
-            <div class="card-header p-3" >
-              <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Treinos prontos</h5>
-            </div>
-
-            <div class="card-body">
-              <table class="table table-hover">
-                <tbody>
-                <% @treinos_prontos.each do |treino| %>
-                  <tr>
-                    <td><%= link_to "#{treino.nome.titleize}", treino,
-                                    class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
-                  </tr>
-                <% end %>
-                </tbody>
-              </table>
-
-            </div>
+          <div class="pt-md-5 pb-md-5">
+            <h1 class="display-4" style="font-family: Helvetica, serif">TREINO EM DIA</h1>
           </div>
+
+
+          <div class="row">
+
+            <div class="col-sm-4">
+              <div class="card" style="width: 20rem; height: 27rem;">
+
+                <div class="card-header p-3" >
+                  <h5 class="mb-0"><i class="fa-regular fa-address-card me-2"></i>Sobre</h5>
+                </div>
+
+                <div class="card-body fs-5">
+                  <p>O treino em dia vai te auxiliar a se manter em uma rotina de treino.</p>
+                  <p>Você pode criar o próprio treino com exercicios personalizados
+                    ou adicionar um dos treinos prontos à sua lista de treinos.</p>
+                  <p>Você usa-los como estão ou edita-los para que se adaptem à sua necessidade.</p>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card" style="width: 20rem;  height: 27rem;">
+
+                <div class="card-header p-3" >
+                  <h5 class="mb-0"><i class="fa-regular fa-circle-question me-2"></i>Como funciona?</h5>
+                </div>
+
+                <div class="card-body fs-5">
+                  <p>Quando você criar seu treino, os 5 exercícios de menor nível que você cadastrou serão listados.</p>
+                  <p>Quando executar um exercício e não desejar mais repeti-lo, basta marcar como concluído.</p>
+                  <p>Novos exercícios com níveis mais altos irão aparecer para que você continue progredindo. </p>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="card" style="width: 20rem;  height: 27rem;">
+
+                <div class="card-header p-3" >
+                  <h5 class="mb-0"><i class="fas fa-tasks me-2"></i>Treinos prontos</h5>
+                </div>
+
+                <div class="card-body fs-5">
+                  <table class="table table-hover">
+                    <tbody>
+                    <% @treinos_prontos.each do |treino| %>
+                      <tr>
+                        <td><%= link_to "#{treino.nome.titleize}", treino,
+                                        class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
 
         </div>
       </div>

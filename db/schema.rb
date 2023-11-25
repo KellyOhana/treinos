@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_213209) do
     t.boolean "concluido"
     t.integer "nivel"
     t.integer "treino_pronto_id"
+    t.string "descricao"
   end
 
   create_table "treino_prontos", id: :bigint, default: -> { "nextval('treinos_prontos_id_seq'::regclass)" }, force: :cascade do |t|

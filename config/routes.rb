@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :treinos do
     collection do
       post :adicionar_treino_pronto
+      post :copiar_treino
     end
 
   end
