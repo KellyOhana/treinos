@@ -32,7 +32,7 @@
                   <% end %>
 
                   <% if exercicio.codependencia.present? %>
-                    <td><%= @exercicios.find(exercicio.codependencia).nome %></td>
+                    <td><%= @exercicios_completos.find{|e| e.id == exercicio.codependencia }.nome %></td>
                     <% else %>
                       <td></td>
                   <% end %>

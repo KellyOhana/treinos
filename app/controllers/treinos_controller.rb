@@ -9,7 +9,13 @@ class TreinosController < ApplicationController
 
   # GET /treinos/1 or /treinos/1.json
   def show
-    @exercicios = @treino.exercicios.where(concluido: false).order(:nivel).limit(5)
+    exercicios_mistos = (1..5).map do |nivel|
+      @treino.exercicios.select { |ex| ex[:nivel] == nivel }.shuffle
+    end.flatten
+
+    @exercicios = exercicios_mistos.select { |ex| ex[:concluido] == false }.first(5)
+
+    @exercicios_completos = @treino.exercicios
   end
 
   # GET /treinos/new
