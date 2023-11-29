@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_213209) do
     t.string "descricao"
   end
 
-  create_table "treino_prontos", id: :bigint, default: -> { "nextval('treinos_prontos_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "treino_prontos", id: :integer, default: nil, force: :cascade do |t|
     t.string "nome", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

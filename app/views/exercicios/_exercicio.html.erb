@@ -6,7 +6,11 @@
           <tr>
             <th scope="col">Nome</th>
             <th scope="col">Nível</th>
-            <th scope="col">Fazer junto</th>
+            <% if @treino.present? %>
+              <th scope="col">Fazer junto</th>
+            <% else %>
+              <td></td>
+            <% end %>
             <th scope="col">Descrição</th>
             <th scope="col">Concluído</th>
             <th scope="col"></th>
@@ -17,7 +21,12 @@
           <tr>
             <td><%= ff.text_field :nome %></td>
             <td><%= ff.select :nivel, options_for_select((1..5).to_a, exercicio.nivel) %></td>
-            <td><%= ff.collection_select :codependencia, Exercicio.where(treino: @treino).order(:nome), :id, :nome, include_blank: "Nenhuma" %></td>
+            <% if @treino.present? %>
+              <td><%= ff.collection_select :codependencia, Exercicio.where(treino: @treino).order(:nome), :id, :nome, include_blank: "Nenhuma" %></td>
+            <% else %>
+              <td></td>
+            <% end %>
+
             <td><%= ff.text_area :descricao, :cols=> 30, :rows => 2 %></td>
             <td><%= ff.check_box :concluido %></td>
             <td><%= ff.hidden_field :id %></td>
