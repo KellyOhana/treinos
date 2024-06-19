@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_213209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "exercicios", id: :integer, default: nil, force: :cascade do |t|
+  create_table "exercicios", force: :cascade do |t|
     t.string "nome", null: false
     t.integer "codependencia"
     t.integer "treino_id"
@@ -24,13 +24,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_21_213209) do
     t.string "descricao"
   end
 
-  create_table "treino_prontos", id: :integer, default: nil, force: :cascade do |t|
+  create_table "treino_prontos", force: :cascade do |t|
     t.string "nome", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "treinos", id: :integer, default: nil, force: :cascade do |t|
+  create_table "treinos", force: :cascade do |t|
     t.string "nome", null: false
     t.integer "user_id", null: false
   end
