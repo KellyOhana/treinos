@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "@rails/request.js": "^0.0.9"
-  }
+  },
+  "packageManager": "yarn@1.22.22",
+  "name": "treinos",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/KellyOhana/treinos.git",
+  "author": "kelly <kellyohanar@hotmail.com>",
+  "license": "MIT"
 }

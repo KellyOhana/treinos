@@ -13,7 +13,7 @@
 #
 # Configure Using Gemfile
 # gem "pg"
-#
+
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -27,7 +27,13 @@ development:
   host: localhost
   port: 5432
   user: kelly
-  password: 1234
+  password: 123456
+
+production:
+  <<: *default
+  database: treinos_production
+  username: treinos
+  password: <%= ENV["TREINOS_DATABASE_PASSWORD"] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
