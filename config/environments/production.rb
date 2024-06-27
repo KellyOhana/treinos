@@ -88,16 +88,20 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  # config.action_mailer.default_url_options = {  host: 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'treinoemdia.fly.dev' }
   config.action_mailer.delivery_method = :smtp
+
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
-    port:                 587,
+    port:                 465,
     domain:               'gmail.com',
     user_name:            ENV['GMAIL_USERNAME'],
     password:             ENV['EMAIL_PASSWORD'],
     authentication:       'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    ssl:                  true,
+    open_timeout:         5,
+    read_timeout:         5
   }
 
   # Do not dump schema after migrations.
