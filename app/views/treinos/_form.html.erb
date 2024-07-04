@@ -2,7 +2,7 @@
   <%= form_with(model: treino, data: { controller: "render-response" }, class: "space-y-4") do |form| %>
     <% if treino.errors.any? %>
       <div style="color: red">
-        <h2><%= pluralize(treino.errors.count, "error") %> prohibited this treino from being saved:</h2>
+        <h2><%= pluralize(treino.errors.count, "error") %> impediu esse treino de ser salvo:</h2>
 
         <ul>
           <% treino.errors.each do |error| %>
@@ -23,7 +23,12 @@
         </fieldset>
 
         <div id="exercicios" class="mb-2">
-          <%= render @treino.exercicios %>
+          <%# if @treino.present? %>
+            <%# byebug %>
+            <%#= render @treino.exercicios %>
+          <%# else %>
+<!--            <td></td>-->
+          <%# end %>
         </div>
 
         <div class="mb-2">

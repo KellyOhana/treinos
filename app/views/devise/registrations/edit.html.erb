@@ -23,26 +23,26 @@
                 <% end %>
 
                 <div class="field">
-                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-                  <%= f.password_field :password, autocomplete: "new-password" %>
+                  <%= f.label :password, "Senha" %> <i>(deixe em branco se não quiser trocar)</i><br />
+                  <%= f.password_field :password, autocomplete: "nova-senha" %>
                   <% if @minimum_password_length %>
                     <br />
-                    <em><%= @minimum_password_length %> characters minimum</em>
+                    <em><%= @minimum_password_length %> caracteres no mínimo</em>
                   <% end %>
                 </div>
 
                 <div class="field">
-                  <%= f.label :password_confirmation %><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+                  <%= f.label :password_confirmation, "Confirmar senha" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "nova-senha" %>
                 </div>
 
                 <div class="field">
-                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-                  <%= f.password_field :current_password, autocomplete: "current-password" %>
+                  <%= f.label :current_password, "Senha atual" %> <i>(Precisamos da sua senha atual para confirmas as mudanças)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "senha-atual" %>
                 </div>
 
                 <div class="actions">
-                  <%= f.submit "Update" %>
+                  <%= f.submit "Atualizar" %>
                 </div>
               <% end %>
             </div>
