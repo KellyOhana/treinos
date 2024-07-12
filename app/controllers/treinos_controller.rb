@@ -84,7 +84,7 @@ class TreinosController < ApplicationController
 
   def copiar_treino
     treino_duplicado = @treino.dup
-    treino_duplicado.nome = "#{@treino.nome}_#{Time.now.to_i}"
+    treino_duplicado.nome = "#{@treino.nome}_(cópia)"
 
     treino_duplicado.save
 
