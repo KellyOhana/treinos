@@ -19,7 +19,7 @@
                 </div>
 
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                  <div>Aguardando confirmação para: <%= resource.unconfirmed_email %></div>
                 <% end %>
 
                 <div class="field">
@@ -41,7 +41,7 @@
                   <%= f.password_field :current_password, autocomplete: "senha-atual" %>
                 </div>
 
-                <div class="actions">
+                <div class="actions p-3">
                   <%= f.submit "Atualizar" %>
                 </div>
               <% end %>

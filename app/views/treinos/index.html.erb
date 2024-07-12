@@ -16,7 +16,11 @@
                   <tbody>
                     <% @treinos.each do |treino| %>
                       <tr>
-                        <td><%= link_to "#{treino.nome.titleize}", treino, class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
+                        <% if treino.exercicios.all? { |ex| ex.concluido } %>
+                          <td><%= link_to "#{treino.nome.titleize} (Concluído)", treino, class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
+                        <% else %>
+                          <td><%= link_to "#{treino.nome.titleize}", treino, class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
+                        <% end %>
                         <td><%= button_to "Copiar", copiar_treino_treinos_path(id: treino.id), method: :post, class: "btn btn-dark btn-sm" %></td>
                       </tr>
                     <% end %>

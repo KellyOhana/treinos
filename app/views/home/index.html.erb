@@ -6,7 +6,7 @@
           <p style="color: green"><%= notice if notice%></p>
           <p style="color: green"><%= alert if alert%></p>
 
-          <div class="pt-md-5 pb-md-5">
+          <div class="pt-md-2 pb-md-5">
             <h1 class="display-2">TREINO EM DIA</h1>
           </div>
 
@@ -24,7 +24,7 @@
                   <p>O treino em dia vai te auxiliar a se manter em uma rotina de treino.</p>
                   <p>Você pode criar o próprio treino com exercícios personalizados
                     ou adicionar um dos treinos prontos à sua lista de treinos.</p>
-                  <p>Você usa-los como estão ou edita-los para que se adaptem à sua necessidade.</p>
+                  <p>Você pode usa-los como estão ou edita-los para que se adaptem à sua necessidade.</p>
 
                 </div>
               </div>
@@ -68,6 +68,9 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="p-3">
+            <%= button_to "Criar treino", new_treino_path, method: :get, class: " btn btn-light btn-lg", style: "background-color: #f58037; border-color: #f58037;" %>
           </div>
 
         </div>

@@ -23,12 +23,7 @@
         </fieldset>
 
         <div id="exercicios" class="mb-2">
-          <%# if @treino.present? %>
-            <%# byebug %>
-            <%#= render @treino.exercicios %>
-          <%# else %>
-<!--            <td></td>-->
-          <%# end %>
+          <%= render @treino.exercicios %>
         </div>
 
         <div class="mb-2">
