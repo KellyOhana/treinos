@@ -85,13 +85,13 @@ class TreinosController < ApplicationController
   def copiar_treino
     treino_duplicado = @treino.dup
     treino_duplicado.nome = "#{@treino.nome}_(cópia)"
-
     treino_duplicado.save
 
     @treino.exercicios.each do |exercicio|
       exercicio_duplicado = exercicio.dup
       exercicio_duplicado.treino_id = treino_duplicado.id
       exercicio_duplicado.codependencia = nil
+      exercicio_duplicado.concluido = false
       exercicio_duplicado.save
     end
 
@@ -106,6 +106,6 @@ class TreinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treino_params
-      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :nivel, :codependencia, :_destroy])
+      params.require(:treino).permit(:nome, :user_id, exercicios_attributes: [:id, :nome, :concluido, :nivel, :codependencia, :descricao, :_destroy])
     end
 end
