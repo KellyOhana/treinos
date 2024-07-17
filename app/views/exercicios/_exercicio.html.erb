@@ -1,42 +1,43 @@
 <div>
     <%= fields_for "treino[exercicios_attributes][#{turbo_id_for(exercicio)}]", exercicio do |ff| %>
       <fieldset class="mb-4" id="<%= turbo_id_for(exercicio) %>">
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Nível</th>
-            <% if @treino.present? && !@treino.id.nil? %>
-              <th scope="col">Fazer junto</th>
-            <% else %>
-              <td></td>
-            <% end %>
-            <th scope="col">Descrição</th>
-            <th scope="col">Concluído</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><%= ff.text_field :nome %></td>
-            <td><%= ff.select :nivel, options_for_select((1..5).to_a, exercicio.nivel) %></td>
-            <% if @treino.present? && !@treino.id.nil? %>
-              <td><%= ff.collection_select :codependencia, Exercicio.where(treino: @treino).order(:nome), :id, :nome, include_blank: "Nenhuma" %></td>
-            <% else %>
-              <td></td>
-            <% end %>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Nível</th>
+              <% if @treino.present? && !@treino.id.nil? %>
+                <th scope="col">Fazer junto</th>
+              <% else %>
+                <td></td>
+              <% end %>
+              <th scope="col">Descrição</th>
+              <th scope="col">Concluído</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td><%= ff.text_field :nome %></td>
+              <td><%= ff.select :nivel, options_for_select((1..5).to_a, exercicio.nivel) %></td>
+              <% if @treino.present? && !@treino.id.nil? %>
+                <td><%= ff.collection_select :codependencia, Exercicio.where(treino: @treino).order(:nome), :id, :nome, include_blank: "Nenhuma" %></td>
+              <% else %>
+                <td></td>
+              <% end %>
 
-            <td><%= ff.text_area :descricao, :cols=> 20, :rows => 2 %></td>
-            <td><%= ff.check_box :concluido %></td>
-            <td><%= ff.hidden_field :id %></td>
-            <td><%= button_tag formaction: exercicio_path(turbo_id_for(exercicio)), formmethod: :delete, class: "btn btn-danger btn-sm" do %>
-                <i class="fa-regular fa-trash-can"></i>
-              <% end %></td>
-          </tr>
-
-          </tbody>
-        </table>
+              <td><%= ff.text_area :descricao, :cols=> 20, :rows => 2, maxlength: 100 %></td>
+              <td><%= ff.check_box :concluido %></td>
+              <td><%= ff.hidden_field :id %></td>
+              <td><%= button_tag formaction: exercicio_path(turbo_id_for(exercicio)), formmethod: :delete, class: "btn btn-danger btn-sm" do %>
+                  <i class="fa-regular fa-trash-can"></i>
+                <% end %></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </fieldset>
     <% end %>
 </div>

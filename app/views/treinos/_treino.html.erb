@@ -9,18 +9,18 @@
 
         <% if @exercicios.present? %>
           <%= form_with(model: @treino, local: true) do |form| %>
-          <table class="table table-hover">
-            <thead>
-            <tr>
-              <th scope="col">Exercício</th>
-              <th scope="col">Concluído</th>
-              <th scope="col">Descrição</th>
-              <th scope="col">Fazer junto</th>
-            </tr>
-            </thead>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Exercício</th>
+                <th scope="col">Concluído</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Fazer junto</th>
+              </tr>
+              </thead>
 
-            <tbody>
-
+              <tbody>
               <% @exercicios.each do |exercicio| %>
                 <%= form.fields_for :exercicios, exercicio do |exercicio_fields| %>
                   <tr>
@@ -28,7 +28,7 @@
                     <td><%= exercicio_fields.check_box :concluido %></td>
 
                     <% if exercicio.descricao.present? %>
-                      <td><%= exercicio_fields.label :descricao, exercicio.descricao %></td>
+                      <td><%= exercicio_fields.label :descricao, exercicio.descricao.scan(/.{1,25}/).join('<br>').html_safe %></td>
                     <% else %>
                       <td></td>
                     <% end %>
@@ -40,12 +40,11 @@
                     <% end %>
                   </tr>
                 <% end %>
-
               <% end %>
+              </tbody>
+            </table>
+          </div>
 
-
-            </tbody>
-          </table>
 
             <%= form.submit "Salvar", class: "btn btn-dark"%>
           <% end %>
