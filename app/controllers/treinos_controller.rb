@@ -1,5 +1,5 @@
 class TreinosController < ApplicationController
-  before_action :set_treino, only: %i[ show edit update destroy copiar_treino ]
+  before_action :set_treino, only: %i[ show edit update destroy copiar_treino refazer_treino]
   before_action :authenticate_user!
 
   # GET /treinos or /treinos.json
@@ -96,6 +96,15 @@ class TreinosController < ApplicationController
     end
 
     redirect_to treinos_url
+  end
+
+  def refazer_treino
+    @treino.exercicios.each do |exercicio|
+      exercicio.concluido = false
+      exercicio.save
+    end
+
+    redirect_to request.referrer
   end
 
   private

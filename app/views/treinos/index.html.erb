@@ -21,16 +21,21 @@
                         <% else %>
                           <td><%= link_to "#{treino.nome.titleize}", treino, class: "text-decoration-none link-dark link-opacity-50-hover" %></td>
                         <% end %>
-                        <td><%= button_to "Copiar", copiar_treino_treinos_path(id: treino.id), method: :post, class: "btn btn-dark btn-sm" %></td>
+                        <td class="text-end">
+                          <div class="d-flex justify-content-end">
+                            <%= button_to "Copiar", copiar_treino_treinos_path(id: treino.id), method: :post, class: "btn btn-dark btn-sm me-2" %>
+                            <%= button_to treino, method: :delete, form: { data: { turbo_confirm: 'Tem certeza?' } }, class: "btn btn-danger btn-sm" do %>
+                              <i class="fa-regular fa-trash-can"></i>
+                            <% end %>
+                          </div>
+                        </td>
                       </tr>
                     <% end %>
                   </tbody>
                 </table>
-
                 <%= button_to "Novo treino", new_treino_path, method: :get, class: "btn btn-dark" %>
               </div>
           </div>
-
         </div>
       </div>
     </div>

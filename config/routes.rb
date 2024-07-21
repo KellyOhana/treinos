@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       post :adicionar_treino_pronto
       post :copiar_treino
+      post :refazer_treino
     end
 
   end

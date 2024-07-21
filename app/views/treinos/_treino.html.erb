@@ -14,9 +14,10 @@
               <thead>
               <tr>
                 <th scope="col">Exercício</th>
-                <th scope="col">Concluído</th>
+                <th scope="col">Nível</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Fazer junto</th>
+                <th scope="col">Concluído</th>
               </tr>
               </thead>
 
@@ -25,10 +26,10 @@
                 <%= form.fields_for :exercicios, exercicio do |exercicio_fields| %>
                   <tr>
                     <td><%= exercicio_fields.label :nome, exercicio.nome %></td>
-                    <td><%= exercicio_fields.check_box :concluido %></td>
+                    <td><%= exercicio_fields.label :nivel, exercicio.nivel %></td>
 
                     <% if exercicio.descricao.present? %>
-                      <td><%= exercicio_fields.label :descricao, exercicio.descricao.scan(/.{1,25}/).join('<br>').html_safe %></td>
+                      <td style="word-break: break-word; white-space: normal;"><%= exercicio_fields.label :descricao, exercicio.descricao %></td>
                     <% else %>
                       <td></td>
                     <% end %>
@@ -38,18 +39,20 @@
                     <% else %>
                       <td></td>
                     <% end %>
+                    <td><%= exercicio_fields.check_box :concluido %></td>
                   </tr>
                 <% end %>
               <% end %>
               </tbody>
             </table>
           </div>
-
-
             <%= form.submit "Salvar", class: "btn btn-dark"%>
           <% end %>
         <% else %>
-          <td> Todos os exercícios foram concluidos! </td>
+          <p> Todos os exercícios foram concluidos! </p>
+          <p>
+            <%= button_to "Refazer", refazer_treino_treinos_path(id: treino.id), method: :post, class: "btn btn-dark btn-sm" %>
+          </p>
         <% end %>
 
     </div>

@@ -74,20 +74,20 @@ futebol_exercicios = [{ nome: 'passe curto', nivel: '1', treino_pronto_id: futeb
                       { nome: 'chute no alvo', nivel: '3', treino_pronto_id: futebol.id },
                       { nome: 'drible',nivel: '4', treino_pronto_id: futebol.id},
                       { nome: 'cabeceada', nivel: '4', treino_pronto_id: futebol.id },
-                      { nome: 'dominio de bola', nivel: '2', treino_pronto_id: futebol.id }]
+                      { nome: 'domínio de bola', nivel: '2', treino_pronto_id: futebol.id }]
 futebol_exercicios.each do |exercicio|
   Exercicio.find_or_create_by(exercicio)
 end
 
 crossfit = TreinoPronto.find_or_create_by(nome: 'crossfit')
-crossfit_exercicios = [{ nome: 'salto na caixa', nivel: '2', descricao: 'pertindo de uma posição estática, saltar com as duas pernas em uma caixa', treino_pronto_id: crossfit.id },
+crossfit_exercicios = [{ nome: 'salto na caixa', nivel: '2', descricao: 'partindo de uma posição estática, saltar com as duas pernas em uma caixa', treino_pronto_id: crossfit.id },
                       { nome: 'agachamento', nivel: '1', treino_pronto_id: crossfit.id },
                       { nome: 'agachamento com barra', nivel: '2', descricao: 'agachamento com barra nas costas', treino_pronto_id: crossfit.id },
                       { nome: 'flexão', nivel: '2', treino_pronto_id: crossfit.id },
                       { nome: 'avanço', nivel: '1', descricao: 'avançar com uma perna de cada vez até encostar o joelho no chão', treino_pronto_id: crossfit.id },
                       { nome: 'corda', nivel: '2', treino_pronto_id: crossfit.id },
                       { nome: 'burpee', nivel: '3', descricao: 'partindo da posição ereta ir ao chão na posição de flexão, depois subir o corpo e finalizar com salto', treino_pronto_id: crossfit.id },
-                      { nome: 'kettlebell swing', nivel: '4', descricao: 'segurar o kettlebel com as uas mão, na posição semi agachado, fazem impulso com o corpo para levatar o kettlebel', treino_pronto_id: crossfit.id},
+                      { nome: 'kettlebell swing', nivel: '4', descricao: 'segurar o kettlebel com as duas mãos, na posição semi agachado, fazendo impulso com o corpo para levatar o kettlebel', treino_pronto_id: crossfit.id},
                       { nome: 'alpinista', nivel: '3', descricao: 'movimento alternado das pernas na posição de prancha', treino_pronto_id: crossfit.id }]
 crossfit_exercicios.each do |exercicio|
   Exercicio.find_or_create_by(exercicio)
