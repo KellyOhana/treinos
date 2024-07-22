@@ -20,7 +20,7 @@
             </thead>
             <tbody>
             <tr>
-              <td><%= ff.text_field :nome %></td>
+              <td><%= ff.text_field :nome, maxlength: 50 %></td>
               <td><%= ff.select :nivel, options_for_select((1..5).to_a, exercicio.nivel) %></td>
               <% if @treino.present? && !@treino.id.nil? %>
                 <td><%= ff.collection_select :codependencia, Exercicio.where(treino: @treino).order(:nome), :id, :nome, include_blank: "Nenhuma" %></td>
